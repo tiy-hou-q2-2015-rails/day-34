@@ -1,0 +1,19 @@
+<% if @task.errors.any? %>
+
+  $("#super-wicked-modal .modal-body").html("<%= j render partial: 'form' %>")
+
+
+<% else %>
+
+  <% @task = Task.new %>
+
+  $("#super-wicked-modal").modal("hide");
+
+  $("#super-wicked-modal .modal-body").html("<%= j render partial: 'form' %>")
+
+
+
+  $("#tasks").html("<%= j render partial: 'tasks' %> ");
+
+
+<% end %>

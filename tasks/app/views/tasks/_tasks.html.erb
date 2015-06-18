@@ -1,0 +1,19 @@
+<h3>Still to Do</h3>
+<ul>
+  <% @tasks.reject{|t| t.done? }.each do |task| %>
+    <li>
+        <%= link_to task.name, task_as_done_path(id: task.id), remote: true  %>
+        (planned <%= distance_of_time_in_words_to_now task.created_at %> ago)
+    </li>
+  <% end %>
+</ul>
+
+<h3>Dunzo</h3>
+<ul class="done">
+  <% @tasks.order("updated_at desc").select{|t| t.done? }.take(10).each do |task| %>
+    <li>
+      <%= task.name %> (completed <%= distance_of_time_in_words_to_now task.updated_at %> ago)
+    </li>
+  <% end %>
+
+</ul>
